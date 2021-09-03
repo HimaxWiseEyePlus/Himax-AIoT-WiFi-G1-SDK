@@ -1,12 +1,12 @@
-# Himax AIoT Platform Board with NB-IoT(TensorFlow Lite for Microcontrollers)
-It is a modified version of the [TensorFlow Lite for Microcontrollers](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/lite/micro) for use with Himax-AIoT-NB-G3 Boards. Each example in the package has been tested in Ubuntu 20.04 LTS environment.
+# Himax-AIoT-WiFi-G1-SDK(TensorFlow Lite for Microcontrollers)
+It is a modified version of the [TensorFlow Lite for Microcontrollers](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/lite/micro) for use with Himax-AIoT-WiFi-G1 Boards. Each example in the package has been tested in Ubuntu 20.04 LTS environment.
 
 Following examples are included :
 - person detection INT8 example
 
 ## Table of contents
   - [Prerequisites](#prerequisites)
-  - [Deploy to Himax-AIoT-NB-G3](#deploy-to-himax-aiot-NB-G3)    
+  - [Deploy to Himax-AIoT-WiFi-G1-SDK](#deploy-to-Himax-AIoT-WiFi-G1-SDK)    
 
 ## Prerequisites
 - Make Tool version
@@ -40,7 +40,7 @@ section for proper environment.
 
   There are 2 main purposes for Himax-AIoT-NB-G3 Debug UART port, print application output and burn application to flash by using xmodem send application binary.
 
-## Deploy to Himax-AIoT-NB-G3
+## Deploy to Himax-AIoT-WiFi-G1-SDK
 
 Default building toolchain in makefile is Metaware Development toolkit, if you are trying to build example with GNU toolkit. please change the `ARC_TOOLCHAIN` define in `Makefile` like this
 
@@ -52,8 +52,8 @@ Before Build person detection INT8 example and flash image, you need to Himax-AI
 ```
 chmod 777 *
 ```
-Build person detection INT8 example and flash image. The resulted flash image will be named `WEI_FW_gnu_arcem9d_wei_r16.img` and saved under `Himax-AIoT-NB-G3-SDK-Azure-RTOS-main\himax_aiot_nb_g3-master\obj_socket_24\gnu_arcem9d_wei_r16`by default.
+Build person detection INT8 example and flash image. The resulted flash image will be named `WEI_FW_gnu_arcem9d_wei_r16.img` and saved under `Himax-AIoT-WiFi-G1-SDK\himax_aiot_nb_g3-master\obj_socket_24\gnu_arcem9d_wei_r16`by default.
 ```
 make clean && make && make flash 
 ```
-After flash image generated, please download the flash image file to Himax-AIoT-NB-G3 EVB by UART, details are described [here](https://github.com/HimaxWiseEyePlus/Himax-AIoT-NB-G3-SDK-Azure-RTOS/tree/master/Himax-AIoT-NB-G3_user_guide#flash-image-update)
+After flash image generated, please download the flash image file to Himax-AIoT-WiFi-G1 EVB by UART, details are described [here](https://github.com/HimaxWiseEyePlus/Himax-AIoT-WiFi-G1-SDK/tree/master/Himax-AIoT-NB-G3_user_guide#flash-image-update)
