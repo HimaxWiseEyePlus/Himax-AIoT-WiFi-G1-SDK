@@ -1,0 +1,4 @@
+How to use OTA tool
+1.make ota
+  Copy output.img & layout.bin to OTA/img folder
+2.ota.exe only support Windows OS
