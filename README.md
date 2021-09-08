@@ -52,7 +52,6 @@ Himax-AIoT-WiFi-G1 platforms EVB includes Himax WE-I Plus MCU, image sensor and 
     - UART Terminal Application such as [TeraTerm](https://ttssh2.osdn.jp/index.html.en).
 
 ## Himax-AIoT-WiFi-G1 Platform EVB Startup
-___
 Use the following procedure to startup the Himax-AIoT-WiFi-G1 platform EVB.
 <br>
 
@@ -83,7 +82,7 @@ Use the following procedure to startup the Himax-AIoT-WiFi-G1 platform EVB.
    
     
     - ***Step 4.2:***
-      Select `1.Command->1.Intoupg`
+      Select `1.Command->1.Intoupg`<br>
       ![alt text](images/Himax-AIoT-WiFi-G1_OTATool_SubMenu.png)
     
         If sucessful, the highlight message <span style="color:red">"Please use OTA UPGRADE TOOL Version : x.x.x"</span> will be shown in `TeraTerm`. Now the device is ready for OTA flash programming.
@@ -139,7 +138,7 @@ Use the following procedure to startup the Himax-AIoT-WiFi-G1 platform EVB.
         ![alt text](images/Himax-AIoT-WiFi-G1_TeraTerm_SelectCOMPort.png)
 
 ## TensorFlow Lite for Microcontroller Example 
-___
+
 ### TFLM Model Path
   - Put your training model in Himax-AIoT-NB-G3-SDK-Azure-RTOS-main\himax_aiot_nb_g3-master\app\scenario_app\hx_aiot_nb_g3 folder
  
