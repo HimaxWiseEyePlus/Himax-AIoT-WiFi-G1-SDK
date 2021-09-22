@@ -25,7 +25,7 @@ Himax-AIoT-WiFi-G1 platforms EVB includes Himax WE-I Plus MCU, image sensor and 
 
 ## Himax-AIoT-WiFi-G1 Platform EVB
 
-![alt text](images/Himax-AIoT-WiFi-G1_Board.png)
+![alt text](docs/images/Himax-AIoT-WiFi-G1_Board.png)
 
   1.	Himax WE-I Plus chip
   3.	HM0360 AoS<sup>TM</sup> VGA camera
@@ -37,7 +37,7 @@ Himax-AIoT-WiFi-G1 platforms EVB includes Himax WE-I Plus MCU, image sensor and 
   9.	GREEN LED x2 and RED LEDx1 and BLUE LEDx1
   10.	Micro-USB cable (I2C/SPI/Flash Download)
 
-  <a href="docs/H013_HX6539_NB-IoT_1SC-DM_V10_20210622_BOM.pdf" target="_blank">Board Schematic PDF</a>
+  <a href="docs/HX6539-A_HWUG(WiFi-ESP12F)_preliminary.pdf" target="_blank">Hardware user guide PDF</a>
 
 ## System Requirement
   - Operating system
@@ -57,7 +57,7 @@ Use the following procedure to startup the Himax-AIoT-WiFi-G1 platform EVB.
 
 ### ***Startup Flowchart***
 
-  ![alt text](images/Himax-AIoT-WiFi-G1_FlowChart.png)
+  ![alt text](docs/images/Himax-AIoT-WiFi-G1_FlowChart.png)
 
 ### ***Power ON EVB***
  - Power supply by usb or battery(AAA*4)
@@ -68,7 +68,7 @@ Use the following procedure to startup the Himax-AIoT-WiFi-G1 platform EVB.
   
   - ***Step 1:*** Follow image below to switch pins on ***Himax-AIoT-WiFi-G1 Platform EVB***.
   
-    ![alt text](images/Himax-AIoT-WiFi-G1_OTA_PinSetting.png) 
+    ![alt text](docs/images/Himax-AIoT-WiFi-G1_OTA_PinSetting.png) 
 
   - ***Step 2:*** Connect with PC USB to power on ***Himax-AIoT-WiFi-G1 Platform EVB***.
 
@@ -78,20 +78,20 @@ Use the following procedure to startup the Himax-AIoT-WiFi-G1 platform EVB.
   - ***Step 4:*** Use `/tools/OTA_Tools/ota.exe` to download EVB image.
     - ***Step 4.1:***
     Open OTA.exe<br>
-    ![alt text](images/Himax-AIoT-WiFi-G1_OTATool_MainMenu.png)
+    ![alt text](docs/images/Himax-AIoT-WiFi-G1_OTATool_MainMenu.png)
    
     
     - ***Step 4.2:***
       Select `1.Command->1.Intoupg`<br>
-      ![alt text](images/Himax-AIoT-WiFi-G1_OTATool_SubMenu.png)
+      ![alt text](docs/images/Himax-AIoT-WiFi-G1_OTATool_SubMenu.png)
     
         If sucessful, the highlight message <span style="color:red">"Please use OTA UPGRADE TOOL Version : x.x.x"</span> will be shown in `TeraTerm`. Now the device is ready for OTA flash programming.
-        ![alt text](images/Himax-AIoT-WiFi-G1_OTATool_OTAMsgReady.png)
+        ![alt text](docs/images/Himax-AIoT-WiFi-G1_OTATool_OTAMsgReady.png)
 
     - ***Step 4.3:*** 
         Switch back to OTA tool and select `2.Upgrade->1.FORCE UPGRADE` to start upgrade image.
 
-        ![alt text](images/Himax-AIoT-WiFi-G1_OTATool_Upgrad.png)
+        ![alt text](docs/images/Himax-AIoT-WiFi-G1_OTATool_Upgrad.png)
 
     - ***Step 4.4:*** Wait for a while, the device will reboot when flash process complete.
  
@@ -101,17 +101,17 @@ Use the following procedure to startup the Himax-AIoT-WiFi-G1 platform EVB.
 - ***Step 1:*** Connect with PC USB to power on ***Himax-AIoT-WiFi-G1 Platform EVB***. 
 - ***Step 2:*** Turn pin #1 switch on & press `Reset button` to reset.  
 
-    ![alt text](images/Himax-AIoT-WiFi-G1_BootFromI2C_PinSetting.png)
+    ![alt text](docs/images/Himax-AIoT-WiFi-G1_BootFromI2C_PinSetting.png)
 
 - ***Step 3:*** Excute OTA.exe on `/tools/OTA_Tools/` and select <br><span style="color:red">3.Other Tools->1.Boot from I2C</span>.
 
 - ***Step 4:*** Enter the input files path manually:<br>`BootUpFromI2C\HX6537-A09TDIG-1111K_QFN72_Debug\sign_formal_PA8530_EM9D_2nd_Bootloader.bin`.<br> 
 
-    ![alt text](images/Himax-AIoT-WiFi-G1_BootFromI2C_SendFile.png)
+    ![alt text](docs/images/Himax-AIoT-WiFi-G1_BootFromI2C_SendFile.png)
 
     The board will reboot & enter 2nd boot loader, you will see the message <span style="color:red">"Please use OTA UPGRADE TOOL Version : x.x.x"</span> that is the same as normal OTA process. Now, just follow normal [Flash Image via OTA tool](#flash-image-via-ota-tool) section to complete process.
 
-    ![alt text](images/Himax-AIoT-WiFi-G1_BootFromI2C_WaitOTAMsg.png)
+    ![alt text](docs/images/Himax-AIoT-WiFi-G1_BootFromI2C_WaitOTAMsg.png)
 
 ### ***Check UART Message Output***
   - Serial Terminal Emulation Application Setting
