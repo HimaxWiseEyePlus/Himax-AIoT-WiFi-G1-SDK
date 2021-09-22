@@ -131,11 +131,11 @@ Use the following procedure to startup the Himax-AIoT-WiFi-G1 platform EVB.
 
     - TeraTerm New Connection
 
-        ![alt text](images/Himax-AIoT-WiFi-G1_TeraTerm_NewConnect.png)
+        ![alt text](docs/images/Himax-AIoT-WiFi-G1_TeraTerm_NewConnect.png)
 
     - TeraTerm Select COM Port
 
-        ![alt text](images/Himax-AIoT-WiFi-G1_TeraTerm_SelectCOMPort.png)
+        ![alt text](docs/images/Himax-AIoT-WiFi-G1_TeraTerm_SelectCOMPort.png)
 
 ## TensorFlow Lite for Microcontroller Example 
 
