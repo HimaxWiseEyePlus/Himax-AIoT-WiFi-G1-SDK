@@ -18,6 +18,10 @@ Himax-AIoT-WiFi-G1 platforms EVB includes Himax WE-I Plus MCU, image sensor and 
   - [Boot from i2c](#boot-from-i2c)
   - [Check UART Message Output](#check-uart-message-output)
 
+- [Retrieve detection result on Himax-AioT-WiFi-G1](#retrieve-detection-result-on-himax-aiot-wifi-g1)
+  - [PC tool](#pc-tool)
+  - [Wifi](#wifi)
+  
 - [TensorFlow Lite for Microcontroller Example](#tensorflow-lite-for-microcontroller-example)
   - [TFLM Model Path](#tflm-model-path)
   - [TFLM Example Person Detection INT8](#tflm-example-person-detection-int8)
@@ -136,6 +140,49 @@ Use the following procedure to startup the Himax-AIoT-WiFi-G1 platform EVB.
     - TeraTerm Select COM Port
 
         ![alt text](docs/images/Himax-AIoT-WiFi-G1_TeraTerm_SelectCOMPort.png)
+
+## Retrieve detection result on Himax-AioT-WiFi-G1
+### ***PC Tool***
+1. Excute GUI tool HMX_FT4222H_GUI.exe under \tools\HMX_FT4222H_GUI\GUI_binary\.
+2. Select 'SPI slave' tab.
+3. In Receive Image/Data field, select 'ALGO' then click the 'Receive' button.
+![alt text](docs/images/Himax-AIoT-WiFi-G1_PC_Tool_1.png)
+4. The GUI PC_Tool will pop a new window 'Simple_FRAMES' to display the captured image and the person detection result.
+![alt text](docs/images/Himax-AIoT-WiFi-G1_PC_Tool_2.png)
+5. In the 'Simple_FRAMES' window, the left-top indicator disply whether human is presence or not.
+    
+    Green (human detect); Red (no human detect).
+    ![alt text](docs/images/Himax-AIoT-WiFi-G1_PC_Tool_3_Human.png)
+    ![alt text](docs/images/Himax-AIoT-WiFi-G1_PC_Tool_4_NoHuman.png)
+
+### ***WiFi***
+
+1. Setup the TCP Server Example on PC.
+  - ***1.1.*** Connect your Win10 PC to WiFi AP.
+  - ***1.2.*** Use ipconfig to get the IP Address of your PC.
+  
+    ![alt text](docs/images/Himax-AIoT-WiFi-G1_python_tcp_server_get_ip.png)
+  
+  - ***1.3.*** Config the IP got above & execute tcp_server_example.py from /tools/tcp_server_example/
+    ![alt text](docs/images/Himax-AIoT-WiFi-G1_python_tcp_server_ip_modify.png)
+    ![alt text](docs/images/Himax-AIoT-WiFi-G1_python_tcp_server_excution.png)
+  - ***1.4.*** The tcp_server_example is ready to receive data.
+    ![alt text](docs/images/Himax-AIoT-WiFi-G1_python_tcp_server_running.png)
+
+2. Setup Himax-AIoT-WiFi-G1.
+  - ***2.1.*** Download the SDK.
+  - ***2.2.*** According to your WiFi environment to config the settings in to app/scenario_app/aiot_example/app_main.c:
+      > #define SSID "your_wifi_ssid" //your wifi ssid <br>
+      > #define PASSWD "your_wifi_password" //you wifi password
+  - ***2.3.*** Set the SERVER_IP to the IP got from ***Step 1.2***
+      > #define SERVER_IP "192.168.1.100" //your tcp server ip
+  - ***2.4.*** Build the image and upgrade to Himax-AIoT-WF-G1([Flash Image via OTA tool](#flash-image-via-ota-tool)).
+  - ***2.5.*** After Himax-AIoT-WF-G1 boot up, it should connect to the TCP Server(PC).
+
+3. Himax-AIoT-WF-G1 continues to sending JPGs and human-detection result to the TCP Server(PC).
+![alt text](docs/images/Himax-AIoT-WiFi-G1_python_tcp_server_human_presense.png)
+![alt text](docs/images/Himax-AIoT-WiFi-G1_python_tcp_server_no_human.png)
+
 
 ## TensorFlow Lite for Microcontroller Example 
 
