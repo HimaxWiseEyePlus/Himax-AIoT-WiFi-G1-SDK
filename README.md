@@ -186,7 +186,7 @@ Use the following procedure to startup the Himax-AIoT-WiFi-G1 platform EVB.
 ## TensorFlow Lite for Microcontroller Example 
 
 ### TFLM Model Path
-  - Put your training model in Himax-AIoT-NB-G3-SDK-Azure-RTOS-main\himax_aiot_nb_g3-master\app\scenario_app\hx_aiot_nb_g3 folder
+  - Put your training model in Himax-AIoT-WiFi-G1\library\cv\tflitemicro_25\examples\person_detection_experimental\
  
 ### TFLM Example Person Detection INT8
 
