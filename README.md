@@ -167,7 +167,6 @@ Use the following procedure to startup the Himax-AIoT-WiFi-G1 platform EVB.
     ![alt text](docs/images/Himax-AIoT-WiFi-G1_python_tcp_server_ip_modify.png)
     ![alt text](docs/images/Himax-AIoT-WiFi-G1_python_tcp_server_excution.png)
   - ***1.4.*** The tcp_server_example is ready to receive data.
-    ![alt text](docs/images/Himax-AIoT-WiFi-G1_python_tcp_server_running.png)
 
 2. Setup Himax-AIoT-WiFi-G1.
   - ***2.1.*** Download the SDK.
@@ -180,6 +179,7 @@ Use the following procedure to startup the Himax-AIoT-WiFi-G1 platform EVB.
   - ***2.5.*** After Himax-AIoT-WF-G1 boot up, it should connect to the TCP Server(PC).
 
 3. Himax-AIoT-WF-G1 continues to sending JPGs and human-detection result to the TCP Server(PC).
+![alt text](docs/images/Himax-AIoT-WiFi-G1_python_tcp_server_running.png)
 ![alt text](docs/images/Himax-AIoT-WiFi-G1_python_tcp_server_human_presense.png)
 ![alt text](docs/images/Himax-AIoT-WiFi-G1_python_tcp_server_no_human.png)
 
