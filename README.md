@@ -163,7 +163,7 @@ Use the following procedure to startup the Himax-AIoT-WiFi-G1 platform EVB.
   
     ![alt text](docs/images/Himax-AIoT-WiFi-G1_python_tcp_server_get_ip.png)
   
-  - ***1.3.*** Config the IP got above & execute tcp_server_example.py from /tools/tcp_server_example/
+  - ***1.3.*** Execute ***tcp_server_example.py*** on ***tools/tcp_server_example/***
     ![alt text](docs/images/Himax-AIoT-WiFi-G1_python_tcp_server_excution.png)
   - ***1.4.*** The tcp_server_example is ready to receive data.
 
