@@ -32,12 +32,15 @@ void app_main()
 {
     uint32_t raw_img_addr, img_width, img_heigh;
     uint32_t jpg_addr, jpg_size;
+    bool tcp_connected = false;
 
     dbg_printf(DBG_LESS_INFO, "app_main starting...\n");
     app_setup();
 
     app_wifi_connect(SSID, PASSWD);
-    app_tcp_open(SERVER_IP, 5555, 0);
+    if (0 == app_tcp_open(SERVER_IP, 5555, 0)) {
+        tcp_connected = true;
+    }
 
     while(1)
     {
@@ -58,8 +61,10 @@ void app_main()
         }
 
         /* Send out results through WiFi */
-        priv_wifi_send_result(jpg_addr, jpg_size, DATA_TYPE_JPG);
-        priv_wifi_send_result((uint32_t)&algo_result, sizeof(struct_algoResult), DATA_TYPE_META_DATA);
+        if (tcp_connected) {
+            priv_wifi_send_result(jpg_addr, jpg_size, DATA_TYPE_JPG);
+            priv_wifi_send_result((uint32_t)&algo_result, sizeof(struct_algoResult), DATA_TYPE_META_DATA);
+        }
     }
 }
 

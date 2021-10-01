@@ -6,25 +6,19 @@ Himax-AIoT-WiFi-G1 platforms EVB includes Himax WE-I Plus MCU, image sensor and 
 ## Table of contents
 
 - [Himax-AIoT-WiFi-G1 Platform EVB](#himax-aiot-nb-g3-platform-evb)
-
-- [System Requirement](#system-requirement)
+- [System Prerequisites](#system-prerequisites)
   - [Hardware Environment Setup](#system-requirement)
   - [Software Tools](#system-requirement)
-
-- [Himax-AIoT-WiFi-G1 Platform EVB Startup](#himax-aiot-nb-g3-platform-evb-startup)
+- [Code building](#code-building)
+- [Deploy image to Himax-AIoT-WiFi-G1 Platform EVB](#deploy-image-to-himax-aiot-wifi-g1-platform-evb)
   - [Startup Flowchart](#startup-flowchart)
   - [Power ON EVB](#power-on-evb)
   - [Flash Image via OTA tool](#flash-image-via-ota-tool)
   - [Boot from i2c](#boot-from-i2c)
   - [Check UART Message Output](#check-uart-message-output)
-
 - [Retrieve detection result on Himax-AioT-WiFi-G1](#retrieve-detection-result-on-himax-aiot-wifi-g1)
   - [PC tool](#pc-tool)
   - [Wifi](#wifi)
-  
-- [TensorFlow Lite for Microcontroller Example](#tensorflow-lite-for-microcontroller-example)
-  - [TFLM Model Path](#tflm-model-path)
-  - [TFLM Example Person Detection INT8](#tflm-example-person-detection-int8)
 
 
 ## Himax-AIoT-WiFi-G1 Platform EVB
@@ -43,32 +37,70 @@ Himax-AIoT-WiFi-G1 platforms EVB includes Himax WE-I Plus MCU, image sensor and 
 
   <a href="docs/HX6539-A_HWUG(WiFi-ESP12F)_preliminary.pdf" target="_blank">Hardware user guide PDF</a>
 
-## System Requirement
-  - Operating system
-    - Ubuntu 20.04 LTS
+<br>
 
+## System Prerequisites
+  - Operating system
+    - Ubuntu 20.04 LTS   
+    <br>
+
+  - Development toolkit
+    - GNU Development Toolkit
+
+      See [ARC GNU Tool Chain](https://github.com/foss-for-synopsys-dwc-arc-processors/toolchain) section for more detail, current released GNU version is [GNU Toolchain for ARC Processors, 2021.03](https://github.com/foss-for-synopsys-dwc-arc-processors/toolchain/releases/tag/arc-2021.03-release). After download and extract toolkit to local space, please remember to add it to environment PATH. For example:
+
+      ```
+      export PATH=[location of your ARC_GNU_ROOT]/bin:$PATH
+      ```
+  <br>
+  
   - Hardware Environment Setup
     - Prepare a micro-USB cable to connect to EVB with PC(used as Power/UART)
+
+  <br>
 
   - Software Tools
     - OTA tool (Windows application, image flash)
     - HMX-AIOT-FT4222H_GUI (Windows application, I2C/CLK/SPI)
+      ```
+      Tools can be found in Himax-AIoT-WiFi-G1-SDK/tools/
+      ```
     - UART Terminal Application such as [TeraTerm](https://ttssh2.osdn.jp/index.html.en).
 
-## Himax-AIoT-WiFi-G1 Platform EVB Startup
+<br>
+
+## Code building
+
+Default building toolchain setting in makefile is Metaware Development toolkit(***mw***), please change it to ***gnu*** in `Makefile`(Himax-AIoT-WiFi-G1-SDK/makefile).
+
+```
+ARC_TOOLCHAIN ?= gnu
+```
+
+Before building, you need to change permission in `Himax-AIoT-WiFi-G1-SDK\tools\image_gen_cstm\output` directory.
+```
+chmod 777 *
+```
+Build code & generate image. The output images will be named `output.img` and saved under `Himax-AIoT-WiFi-G1-SDK\tools\image_gen_cstm\output`.
+```
+make clean && make && make flash 
+```
+<br>
+
+## Deploy image to Himax-AIoT-WiFi-G1 Platform EVB
 Use the following procedure to startup the Himax-AIoT-WiFi-G1 platform EVB.
 <br>
 
 ### ***Startup Flowchart***
 
-  ![alt text](docs/images/Himax-AIoT-WiFi-G1_FlowChart.png)
+  ![alt texteee](docs/images/Himax-AIoT-WiFi-G1_FlowChart.png)
 
 ### ***Power ON EVB***
  - Power supply by usb or battery(AAA*4)
 
 
 ### ***Flash Image via OTA tool***
-> All following steps are done in Windows environment
+> All following steps are done in Windows.
   
   - ***Step 1:*** Follow image below to switch pins on ***Himax-AIoT-WiFi-G1 Platform EVB***.
   
@@ -187,12 +219,4 @@ Use the following procedure to startup the Himax-AIoT-WiFi-G1 platform EVB.
 
 ### TFLM Model Path
   - Put your training model in Himax-AIoT-WiFi-G1\library\cv\tflitemicro_25\examples\person_detection_experimental\
- 
-### TFLM Example Person Detection INT8
 
-  To generate person detection example flash binary for Himax AIoT Platform EVB:
-  1. Based on the flow of [person detection example](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/lite/micro/examples/person_detection_experimental#person-detection-example) to generate flash image. 
-  2. Download image binary to Himax-AIoT-WiFi-G1 EVB, detail steps can be found at [Flash Image via OTA tool](#flash-image-via-ota-tool).
-  3. Person detection example message will be shown on the terminal application. 
-
- 

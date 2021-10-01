@@ -113,11 +113,12 @@ int32_t app_wifi_scan_test()
 int32_t app_wifi_connect(char *ssid, char *password)
 {
     ESP8266_DEF_PTR p_esp = &g_esp8266;
-    char *at_ssid = NULL, *at_passwd = NULL;
+    //char *at_ssid = NULL, *at_passwd = NULL;
     int32_t ret;
+    char at_ssid[64] = {0}, at_passwd[64] = {0};
 
-    at_ssid = (char *)malloc(strlen(ssid)+2);
-    at_passwd = (char *)malloc(strlen(password)+2);
+    //at_ssid = (char *)malloc(strlen(ssid)+3);
+    //at_passwd = (char *)malloc(strlen(password)+3);
     sprintf(at_ssid, "\"%s\"", ssid);
     sprintf(at_passwd, "\"%s\"", password);
     dbg_printf(DBG_LESS_INFO, "at_ssid = %s\n", at_ssid);
@@ -140,13 +141,13 @@ int32_t app_wifi_connect(char *ssid, char *password)
         ret = esp8266_tcp_recv_mode_set(p_esp, true);
         dbg_printf(DBG_LESS_INFO, "esp8266_tcp_recv_mode_set(ESP8266_RECV_PASSIVE) return %d\n", ret);
 
-        free(at_ssid);
-        free(at_passwd);
+        //free(at_ssid);
+        //free(at_passwd);
         return 0;
     } while (0);
 
-    free(at_ssid);
-    free(at_passwd);
+    //free(at_ssid);
+    //free(at_passwd);
 
     return -1;
 }
@@ -231,6 +232,8 @@ int32_t app_tcp_send(int32_t link_id, uint8_t *data, int32_t data_len)
     return 0;
 }
 
+static uint8_t priv_tcp_rx_buf[1024];
+
 void app_wifi_check_rx(TCP_RX_CB rx_cb)
 {
     ESP8266_DEF_PTR p_esp = &g_esp8266;
@@ -248,12 +251,13 @@ void app_wifi_check_rx(TCP_RX_CB rx_cb)
         uint8_t *rx_data;
         int32_t rx_len = 0;
 
-        rx_data = (uint8_t *)malloc(len_ln0);
+        //rx_data = (uint8_t *)malloc(len_ln0);
+        rx_data = priv_tcp_rx_buf;
         ret = esp8266_tcp_multi_passive_read(p_esp, 0, (char*)rx_data, len_ln0, &rx_len);
         if (0 == ret && rx_len > 0) {
             rx_cb(0, rx_data, rx_len);
         }
-        free(rx_data);
+        //free(rx_data);
     }
 
     /* Get the Receive Data for Link_ID 1 */
@@ -261,12 +265,13 @@ void app_wifi_check_rx(TCP_RX_CB rx_cb)
         uint8_t *rx_data;
         int32_t rx_len = 0;
 
-        rx_data = (uint8_t *)malloc(len_ln1);
+        //rx_data = (uint8_t *)malloc(len_ln1);
+        rx_data = priv_tcp_rx_buf;
         ret = esp8266_tcp_multi_passive_read(p_esp, 1, (char*)rx_data, len_ln1, &rx_len);
         if (0 == ret && rx_len > 0) {
             rx_cb(1, rx_data, rx_len);
         }
-        free(rx_data);
+        //free(rx_data);
     }
 
     /* TODO: Should get the Receive Data for other Link_IDs. */
