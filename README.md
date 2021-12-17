@@ -141,7 +141,7 @@ Use the following procedure to startup the Himax-AIoT-WiFi-G1 platform EVB.
 
 - ***Step 3:*** Excute OTA.exe on `/tools/OTA_Tools/` and select <br><span style="color:red">3.Other Tools->1.Boot from I2C</span>.
 
-- ***Step 4:*** Enter the input files path manually:<br>`BootUpFromI2C\HX6537-A09TDIG-1111K_QFN72_Debug\sign_formal_PA8530_EM9D_2nd_Bootloader.bin`.<br> 
+- ***Step 4:*** Enter the input files path manually:<br>`BootUpFromI2C\HX6537-A09TDIG-1111V_QFN72_Debug\sign_formal_PA8530_EM9D_2nd_Bootloader.bin`.<br> 
 
     ![alt text](docs/images/Himax-AIoT-WiFi-G1_BootFromI2C_SendFile.png)
 
